@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PREMIUM COLLECTION</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:#f7f3ee;
+  color:#111;
+}
+
+.topbar{
+  padding:24px 60px;
+  background:white;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 10px rgba(0,0,0,0.06);
+}
+
+.logo{
+  font-size:2rem;
+  font-weight:700;
+  letter-spacing:2px;
+}
+
+.logo span{
+  color:#b8965a;
+}
+
+.back-btn{
+  border:none;
+  background:black;
+  color:white;
+  padding:12px 22px;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+.product-page{
+  width:min(1400px,92%);
+  margin:50px auto;
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:70px;
+  align-items:start;
+}
+
+.product-image{
+  background:white;
+  border-radius:28px;
+  padding:30px;
+}
+
+.product-image img{
+  width:100%;
+  height:780px;
+  object-fit:cover;
+  border-radius:24px;
+}
+
+.product-details{
+  padding-top:20px;
+}
+
+.product-category{
+  color:#b8965a;
+  font-size:0.9rem;
+  letter-spacing:2px;
+  margin-bottom:18px;
+  text-transform:uppercase;
+}
+
+.product-title{
+  font-size:4rem;
+  line-height:1.1;
+  margin-bottom:20px;
+}
+
+.product-meta{
+  font-size:1.15rem;
+  color:#666;
+  margin-bottom:25px;
+}
+
+.price-row{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin-bottom:30px;
+}
+
+.main-price{
+  font-size:2.7rem;
+  font-weight:700;
+}
+
+.old-price{
+  font-size:1.4rem;
+  color:#999;
+  text-decoration:line-through;
+}
+
+.offer-box{
+  background:white;
+  padding:22px;
+  border-radius:18px;
+  margin-bottom:22px;
+}
+
+.offer-box h3{
+  margin-bottom:10px;
+}
+
+.coupon{
+  margin-top:10px;
+  font-size:1.1rem;
+}
+
+.section-title{
+  font-size:1.2rem;
+  margin-bottom:18px;
+  margin-top:35px;
+}
+
+.color-options{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.color-btn{
+  border:none;
+  padding:14px 26px;
+  border-radius:40px;
+  cursor:pointer;
+  background:white;
+  font-size:1rem;
+}
+
+.color-btn.active{
+  background:black;
+  color:white;
+}
+
+.pincode-box{
+  display:flex;
+  gap:12px;
+  margin-top:10px;
+}
+
+.pincode-box input{
+  flex:1;
+  padding:18px;
+  border:none;
+  border-radius:16px;
+  font-size:1rem;
+}
+
+.pincode-box button{
+  border:none;
+  background:black;
+  color:white;
+  padding:18px 28px;
+  border-radius:16px;
+  cursor:pointer;
+}
+
+#delivery-result{
+  margin-top:12px;
+  font-size:1rem;
+}
+
+.action-buttons{
+  display:flex;
+  gap:18px;
+  margin-top:40px;
+}
+
+.cart-btn,
+.wish-btn{
+  flex:1;
+  border:none;
+  padding:22px;
+  border-radius:18px;
+  font-size:1rem;
+  cursor:pointer;
+}
+
+.cart-btn{
+  background:black;
+  color:white;
+}
+
+.wish-btn{
+  background:white;
+}
+
+.extra-info{
+  margin-top:50px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.info-card{
+  background:white;
+  padding:24px;
+  border-radius:18px;
+}
+
+.related-grid{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  padding-bottom:10px;
+  scrollbar-width:none;
+}
+
+.related-grid::-webkit-scrollbar{
+  display:none;
+}
+
+.related-card{
+  min-width:180px;
+  max-width:180px;
+  background:white;
+  border-radius:18px;
+  overflow:hidden;
+  flex-shrink:0;
+  cursor:pointer;
+  transition:0.3s;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+}
+
+.related-card:hover{
+  transform:translateY(-5px);
+}
+
+.related-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.related-content{
+  padding:14px;
+}
+
+.related-category{
+  font-size:0.7rem;
+  color:#b8965a;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+
+.related-title{
+  font-size:0.95rem;
+  font-weight:700;
+  line-height:1.3;
+  margin-bottom:8px;
+}
+
+.related-meta{
+  font-size:0.8rem;
+  color:#777;
+  margin-bottom:12px;
+}
+
+.related-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.related-price{
+  font-size:1rem;
+  font-weight:700;
+}
+
+.related-old{
+  font-size:0.75rem;
+  color:#999;
+  text-decoration:line-through;
+  margin-left:4px;
+}
+
+.related-btn{
+  width:34px;
+  height:34px;
+  border:none;
+  border-radius:50%;
+  background:black;
+  color:white;
+  cursor:pointer;
+  font-size:0.9rem;
+}
+@media(max-width:1000px){
+
+  .related-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+
+  .related-grid{
+    grid-template-columns:1fr;
+  }
+}
+.add-cart-btn{
+  flex:1;
+  border:none;
+  padding:22px;
+  border-radius:18px;
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+  background:linear-gradient(135deg,#111,#2b2b2b);
+  color:white;
+  transition:0.3s;
+  box-shadow:0 10px 24px rgba(0,0,0,0.15);
+  letter-spacing:0.5px;
+}
+
+.add-cart-btn:hover{
+  transform:translateY(-3px);
+  background:linear-gradient(135deg,#b8965a,#8f6d38);
+  box-shadow:0 16px 30px rgba(184,150,90,0.35);
+}
+
+.add-cart-btn:active{
+  transform:scale(0.98);
+}
+@media(max-width:900px){
+
+  .product-page{
+    grid-template-columns:1fr;
+  }
+
+  .product-image img{
+    height:450px;
+  }
+
+  .product-title{
+    font-size:2.5rem;
+  }
+
+  .topbar{
+    padding:20px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+
+  <div class="logo">
+    PREMIUM <span>COLLECTION</span>
+  </div>
+
+  <button class="back-btn" onclick="window.location.href='asone.htm'">
+    ← Back
+  </button>
+
+</div>
+
+<div class="product-page">
+
+  <div class="product-image">
+    <img id="product-image" src="">
+  </div>
+
+  <div class="product-details">
+
+    <div class="product-category" id="product-category"></div>
+
+    <h1 class="product-title" id="product-title"></h1>
+
+    <p class="product-meta" id="product-meta"></p>
+
+    <div class="price-row">
+      <div class="main-price" id="product-price"></div>
+      <div class="old-price" id="product-old-price"></div>
+    </div>
+
+    <div class="offer-box">
+
+      <h3>Exclusive Offer</h3>
+
+      <p id="product-offer"></p>
+
+      <div class="coupon">
+        Coupon Code:
+        <strong id="product-coupon"></strong>
+      </div>
+
+    </div>
+
+    <div class="section-title">
+      Choose Colour
+    </div>
+
+    <div class="color-options" id="color-options"></div>
+
+    <div class="section-title">
+      Check Delivery Availability
+    </div>
+
+    <div class="pincode-box">
+
+      <input type="text" id="pincode" placeholder="Enter Pincode">
+
+      <button onclick="checkDelivery()">
+        Check
+      </button>
+
+    </div>
+
+    <div id="delivery-result"></div>
+
+    <div class="action-buttons">
+
+      <button class="add-cart-btn" onclick="addToCartFromPage()">
+  Add to Cart
+</button>
+
+      <button class="wish-btn" onclick="addToWishlist()">
+  ♡ Wishlist
+</button>
+
+    </div>
+
+   <div class="extra-info">
+
+  <div class="info-card">
+    <h4>Free Shipping</h4>
+    <p>On orders above ₹5,000</p>
+  </div>
+
+  <div class="info-card">
+    <h4>Easy Returns</h4>
+    <p>30-day hassle-free returns</p>
+  </div>
+
+  <div class="info-card">
+    <h4>Authentic Luxury</h4>
+    <p>100% genuine premium products</p>
+  </div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- YOU MAY LIKE -->
+<div class="you-may-like">
+
+  <h2>You May Also Like</h2>
+
+  <div class="related-grid" id="related-products"></div>
+
+</div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+const products =
+  JSON.parse(localStorage.getItem('productsData')) || [];
+
+const selectedId =
+  localStorage.getItem('selectedProduct');
+
+const product =
+  products.find(p => p.id == selectedId);
+
+document.getElementById('product-image').src =
+  product.image;
+
+document.getElementById('product-title').innerText =
+  product.name;
+
+document.getElementById('product-category').innerText =
+  product.cat;
+
+document.getElementById('product-meta').innerText =
+  product.meta;
+
+document.getElementById('product-price').innerText =
+  `₹${product.price.toLocaleString()}`;
+
+if(product.oldPrice){
+
+  document.getElementById('product-old-price').innerText =
+    `₹${product.oldPrice.toLocaleString()}`;
+}
+
+document.getElementById('product-offer').innerText =
+  product.offer;
+
+document.getElementById('product-coupon').innerText =
+  product.coupon;
+
+const colorBox =
+  document.getElementById('color-options');
+
+product.colors.forEach((color,index)=>{
+
+  const btn =
+    document.createElement('button');
+
+  btn.className = 'color-btn';
+
+  btn.innerText = color;
+
+  if(index===0){
+    btn.classList.add('active');
+  }
+
+  btn.onclick = ()=>{
+
+    document.querySelectorAll('.color-btn')
+      .forEach(b=>b.classList.remove('active'));
+
+    btn.classList.add('active');
+  }
+
+  colorBox.appendChild(btn);
+
+});
+
+function checkDelivery(){
+
+  const pin =
+    document.getElementById('pincode').value;
+
+  const result =
+    document.getElementById('delivery-result');
+
+  if(pin.length !== 6){
+
+    result.innerHTML =
+      '❌ Enter valid pincode';
+
+    result.style.color = 'red';
+
+    return;
+  }
+
+  result.innerHTML =
+    '✓ Delivery available in 2-4 days';
+
+  result.style.color = 'green';
+}
+function addToWishlist() {
+
+  let wish =
+    JSON.parse(localStorage.getItem("wish")) || [];
+
+  const existing =
+    wish.find(item => item.id == product.id);
+
+  if(existing){
+
+    alert("Already in wishlist!");
+
+    return;
+  }
+
+  wish.push(product);
+
+  localStorage.setItem(
+    "wish",
+    JSON.stringify(wish)
+  );
+
+  alert(product.name + " added to wishlist!");
+}
+function addToCart(){
+
+  alert(product.name + ' added to cart!');
+}
+// YOU MAY LIKE
+
+const relatedBox =
+document.getElementById("related-products");
+
+const relatedProducts =
+products.filter(p => p.id != product.id);
+
+relatedProducts.forEach(item => {
+
+  relatedBox.innerHTML += `
+
+  <div class="related-card"
+  onclick="openProduct(${item.id})">
+
+    <img src="${item.image}">
+
+    <div class="related-content">
+
+      <div class="related-category">
+        ${item.cat}
+      </div>
+
+      <div class="related-title">
+        ${item.name}
+      </div>
+
+      <div class="related-meta">
+        ${item.meta}
+      </div>
+
+      <div class="related-bottom">
+
+        <div class="related-price">
+
+          ₹${item.price.toLocaleString()}
+
+          ${
+            item.oldPrice
+            ?
+            `<span class="related-old">
+              ₹${item.oldPrice.toLocaleString()}
+            </span>`
+            :
+            ''
+          }
+
+        </div>
+
+        <button class="related-btn">
+          →
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  `;
+});
+
+function openProduct(id){
+
+  localStorage.setItem(
+    "selectedProduct",
+    id
+  );
+
+  location.reload();
+}
+function addToCartFromPage() {
+
+  let cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
+
+  const existing =
+    cart.find(item => item.id == product.id);
+
+  if(existing){
+
+    existing.qty += 1;
+
+  } else {
+
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      qty: 1,
+      meta: product.meta
+    });
+  }
+
+  localStorage.setItem(
+    "cart",
+    JSON.stringify(cart)
+  );
+
+  alert(product.name + " added to cart!");
+}
+</script>
+
+</body>
+</html>
