@@ -375,7 +375,7 @@ body{
     PREMIUM <span>COLLECTION</span>
   </div>
 
-  <button class="back-btn" onclick="window.location.href='index.html'">
+  <button class="back-btn" onclick="window.location.href='asone.htm'">
     ← Back
   </button>
 
@@ -497,7 +497,7 @@ const product =
   products.find(p => p.id == selectedId);
 
 document.getElementById('product-image').src =
-  product.image;
+  product.image.replace('../', '');
 
 document.getElementById('product-title').innerText =
   product.name;

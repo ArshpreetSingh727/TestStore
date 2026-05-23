@@ -497,16 +497,16 @@ const product =
   products.find(p => p.id == selectedId);
 
 document.getElementById('product-image').src =
-  product.image;
+  product.image.replace('../', '');
 
 document.getElementById('product-title').innerText =
-  product.name;
+  product.name.replace('../', '');;
 
 document.getElementById('product-category').innerText =
-  product.cat;
+  product.cat.replace('../', '');;
 
 document.getElementById('product-meta').innerText =
-  product.meta;
+  product.meta.replace('../', '');;
 
 document.getElementById('product-price').innerText =
   `₹${product.price.toLocaleString()}`;
